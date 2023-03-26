@@ -164,6 +164,14 @@ bool preciceAdapter::FSI::FluidStructureInteraction::addWriters(std::string data
         );
         DEBUG(adapterInfo("Added writer: Stress."));
     }
+    else if (dataName.find("Pressure") == 0)
+    {
+        interface->addCouplingDataWriter(
+            dataName,
+            new Pressure(mesh_, solverType_) /* TODO: Add any other arguments here */
+        );
+        DEBUG(adapterInfo("Added writer: Pressure."));
+    }
     else
     {
         found = false;
@@ -209,6 +217,14 @@ bool preciceAdapter::FSI::FluidStructureInteraction::addReaders(std::string data
         interface->addCouplingDataReader(
             dataName,
             new Stress(mesh_, solverType_) /* TODO: Add any other arguments here */
+        );
+        DEBUG(adapterInfo("Added reader: Stress."));
+    }
+    else if (dataName.find("Pressure") == 0)
+    {
+        interface->addCouplingDataReader(
+            dataName,
+            new Pressure(mesh_, solverType_) /* TODO: Add any other arguments here */
         );
         DEBUG(adapterInfo("Added reader: Stress."));
     }

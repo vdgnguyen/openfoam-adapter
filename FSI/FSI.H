@@ -7,6 +7,8 @@
 #include "FSI/DisplacementDelta.H"
 #include "FSI/Force.H"
 #include "FSI/Stress.H"
+#include "FSI/Pressure.H"
+
 
 #include "fvCFD.H"
 
